@@ -10,7 +10,7 @@ import { GitHubLoader } from './core/github.js';
 // Конфигурация
 const CONFIG = {
     github: {
-        owner: 'твой-аккаунт', // ⚠️ ЗАМЕНИТЬ
+        owner: 'adletescenderov300-ui', // ⚠️ ЗАМЕНИТЬ
         repo: 'fitness-content', // ⚠️ ЗАМЕНИТЬ
         branch: 'main'
     }
