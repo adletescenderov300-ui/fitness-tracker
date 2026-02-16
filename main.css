@@ -1,0 +1,223 @@
+/* ========== APPLE DESIGN SYSTEM ========== */
+:root {
+    /* Colors - Dark mode only (как в Apple) */
+    --background: #000000;
+    --surface: #1C1C1E;
+    --surface-secondary: #2C2C2E;
+    --surface-tertiary: #3A3A3C;
+    --text-primary: #FFFFFF;
+    --text-secondary: #8E8E93;
+    --text-tertiary: #636366;
+    --accent: #0A84FF;
+    --accent-press: #007AFF;
+    --success: #30D158;
+    --warning: #FF9F0A;
+    --danger: #FF453A;
+    
+    /* Typography */
+    --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    
+    /* Animation */
+    --spring: cubic-bezier(0.45, 1.35, 0.5, 1);
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --duration: 0.3s;
+}
+
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--system-font);
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+/* ========== APP CONTAINER ========== */
+.app {
+    max-width: 430px; /* iPhone 15 Pro Max width */
+    margin: 0 auto;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    background: var(--background);
+    position: relative;
+    padding: 0 var(--space-md);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ========== LOADING SCREEN ========== */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity var(--duration) var(--ease);
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--surface);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--space-lg);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: var(--space-xs);
+}
+
+.loading-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: 34px; }
+h2 { font-size: 28px; }
+h3 { font-size: 22px; }
+
+/* ========== COMPONENTS ========== */
+.card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.card:active {
+    background: var(--surface-secondary);
+    transform: scale(0.98);
+}
+
+.button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: var(--space-md) var(--space-lg);
+    font-size: 17px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.2s var(--ease);
+    cursor: pointer;
+}
+
+.button:active {
+    background: var(--accent-press);
+    transform: scale(0.98);
+}
+
+.button-secondary {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.button-secondary:active {
+    background: var(--surface-secondary);
+}
+
+/* ========== NAVIGATION ========== */
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(28, 28, 30, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-sm) var(--space-md);
+    padding-bottom: calc(var(--space-sm) + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: space-around;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--text-secondary);
+    font-size: 10px;
+    transition: color 0.2s var(--ease);
+    cursor: pointer;
+    padding: var(--space-xs) 0;
+}
+
+.tab-item.active {
+    color: var(--accent);
+}
+
+.tab-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* ========== UTILITIES ========== */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s var(--ease);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* iOS-style safe areas */
+.safe-top {
+    padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+}
