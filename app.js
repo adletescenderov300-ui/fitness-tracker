@@ -372,6 +372,14 @@ function showErrorScreen(message) {
 // ============================================
 document.addEventListener('DOMContentLoaded', initApp);
 
+// ВРЕМЕННО: принудительно показываем интерфейс для теста
+setTimeout(() => {
+    if (document.querySelector('.loading-screen')) {
+        console.log('Принудительный рендер главного экрана');
+        renderMainScreen();
+    }
+}, 3000);
+
 // Добавляем стили для новых элементов (временно добавим в head)
 const style = document.createElement('style');
 style.textContent = `
